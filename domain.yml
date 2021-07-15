@@ -8,27 +8,80 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - faq
+  - give_information
+  - ask_service
+  - reservation
+
+entities:
+  - bookingseat
+  - confirmation
+  - faq_respond
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! Welcome to XYZ Restaurant. How can I help you?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  - text: "Won't you check out our one of the best dishes."
+    image: "https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+  - text: "Did that help you? What else can I do for you?"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "Great, carry on please!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Bye. Thank you so much for giving your precious time. Hope you will come again!"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Hey, I am a super advanced assistant in service for you."
+
+  utter_ask_confirm_booking:
+  - text: "Should I confirm the booking for you?"
+ 
+  utter_ask_seatcount:
+  - text: "how many seat you want to book"
+
+  utter_ask_bookingtime:
+  - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
+
+  utter_ask_seatbooked:
+  - text: "You have reserved 2 seats in our AC section for 7:30pm. Thanks!"
+
+  utter_ask_category:
+  - text: "Which section would you like to book"
+    buttons:
+      - title: "AC"
+      - title: "Non AC"
+       
+  utter_ask_confirm booking:
+  - text: "Booking Confirm ! Do you want to reset"
+
+  utter_slots_values:
+  - text: "You've submitted the following answers:\n
+            - Bookingtype?: {utter_ask_category}\n
+            - Booking Time: {utter_ask_bookingtime}\n
+            - Seat: {utter_ask_seatcount}\n"
+
+
+slots:
+  confirm_booking:
+    type: unfeaturized
+  seatcount:
+    type: unfeaturized
+  bookingtime:
+    type: unfeaturized
+  seatbooked:
+    type: unfeaturized
+  category:
+    type: unfeaturized
+
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+forms:
+  - customer_form

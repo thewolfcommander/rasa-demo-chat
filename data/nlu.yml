@@ -90,3 +90,56 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+
+# Here I'm going to write the core functionality of restaurant
+# Some of the faqs I've got from some restaurant website to get an overview of what type of questions are being asked by customers.
+- intent: faq
+  examples: |
+    - what are your timings?
+    - what days are you open?
+    - how do i cancel a reservation?
+    - what are the specials?
+    - timings for restaurant?
+    - cancelling a reservation?
+    - can i get discount?
+    - how do i get discount?
+    - how to get discount?
+    - how much discount can i get on booking a table?
+    - how much discount can i get on reservation?
+    - how do i make a regular table booking?
+    - how can i be certain my booking's been received?
+    - do i get any confirmation for my booking or reservation?
+    - how much do i have to pay for my booking?
+
+- intent: give_information
+  examples: |
+    - here's my email example@example.com
+    - my email address is example@example.com
+    - example@example.com
+    - my phone number is [9999999999](phone_number)
+    - [9999999999](phone_number)
+    - can you please send it to example@example.com?
+    - can you please send it to [9999999999](phone_number)
+    - email is example@example.com
+
+- intent: ask_service
+  examples: |
+    - i want to get a regular subscription
+    - i want a subscription
+    - i want a regular service
+    - can i opt for a regular service?
+    - how can i get a tiffin service?
+    - can i get a tiffin service?
+
+- intent: reservation
+  examples: |
+    - what are the options available to book?
+    - options available for booking
+    - are there ac or non ac available?
+    - is there room service available?
+    - is there any room available at night?
+    - reserve table for me
+    - book table for me
+    - book room for me
+    - room available
