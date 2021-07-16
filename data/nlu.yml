@@ -190,3 +190,19 @@ nlu:
   examples: |
     - [AC](booking_category)
     - [Non-AC](booking_category)
+
+- intent: show_booking
+  examples: |
+    - Please show my booking
+    - which seat I've booked
+    - how many seats I've booked
+    - show my reservation details
+    - show my booking details
+
+- intent: cancel_booking
+  examples: |
+    - Please cancel my booking
+    - i want to cancel my booking
+    - i don't want my booking
+    - i don't want this restaurant
+    - i don't like this booking

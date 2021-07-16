@@ -59,51 +59,16 @@ stories:
   - intent: faq_opening
   - action: utter_faq_opening
 
-# - story: booking
-#   steps:
-#   - intent: reservation
-#   - action: form_info
-#   - active_loop: form_info
-#   - active_loop: null
-  
+- story: show my booking
+  steps: 
+  - intent: show_booking
+  - action: utter_booking_details
 
-# - story: booking happy path - ac room
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: reservation
-#   - action: utter_startbooking
-#   - intent: affirm
-#   - action: action_ask_seatcount
-#   - intent: seat_count
-#   - action: utter_recieve_seatcount
-#   - action: utter_ask_bookingtime
-#   - intent: booking_time
-#   - action: utter_ask_category
-#   - intent: receive_category
-#     entities: 
-#     - booking_category: "AC"
-#   # - action: utter_ask_confirm_booking
-#   - intent: affirm
-#   # - action: utter_ask_seatbooked
-
-
-# - story: booking happy path - non-ac room
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: reservation
-#   - action: utter_startbooking
-#   - intent: affirm
-#   - action: utter_ask_seatcount
-#   - intent: seat_count
-#   - action: utter_recieve_seatcount
-#   - action: utter_ask_bookingtime
-#   - intent: booking_time
-#   - action: utter_ask_category
-#   - intent: receive_category
-#     entities: 
-#     - booking_category: "Non-AC"
-#   # - action: utter_ask_confirm_booking
-#   - intent: affirm
-#   # - action: utter_ask_seatbooked
+- story: cancel my booking 
+  steps: 
+  - intent: cancel_booking
+  - action: utter_confirm_cancellation
+  - intent: affirm
+  - action: action_cancel_booking
+  - action: utter_booking_cancelled
+  - action: utter_goodbye

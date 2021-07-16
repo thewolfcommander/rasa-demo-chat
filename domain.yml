@@ -20,6 +20,8 @@ intents:
   - reservation
   - booking_time
   - receive_category
+  - show_booking
+  - cancel_booking
 
 responses:
   utter_greet:
@@ -51,7 +53,16 @@ responses:
   - text: "Here are the booking options: [1] AC  and [2] Non-AC"
 
   utter_book_success:
-  - text: "Hooray!! You've successfully booked the seat in XYZ restaurant. Here are the information that you've entered. Do you want to book? \n\t Name: {name} \n\t Number of seats: {seatcount} \n\t Booking Time: {bookingtime} \n\t AC/Non-AC: {category} \n\t "
+  - text: "Hooray!! You've successfully booked the seat in XYZ restaurant. Here are your booking details: \n\t Name: {name} \n\t Number of seats: {seatcount} \n\t Booking Time: {bookingtime} \n\t AC/Non-AC: {category} \n\t "
+
+  utter_booking_details:
+  - text: "Here are your booking details: \n\t Name: {name} \n\t Number of seats: {seatcount} \n\t Booking Time: {bookingtime} \n\t AC/Non-AC: {category} \n\t "
+
+  utter_confirm_cancellation:
+  - text: "Are you sure you want to cancel your booking? You may lose your precious slot."
+
+  utter_booking_cancelled:
+  - text: "Your booking has been cancelled"
 
   # Input Questions to ask from user (mapped to custom actions)
   utter_ask_name: 
@@ -101,16 +112,21 @@ entities:
   - seatcount
 
 slots:
-  # confirm_booking:
-  #   type: unfeaturized
   name:
-    type: unfeaturized
+    type: text
+    influence_conversation: false
   seatcount:
-    type: unfeaturized
+    type: text
+    influence_conversation: false
   bookingtime:
-    type: unfeaturized
+    type: text
+    influence_conversation: true
   category:
-    type: unfeaturized
+    type: categorical
+    values:
+      - AC
+      - Non-AC
+    influence_conversation: true
 
 
 actions:
@@ -128,8 +144,7 @@ actions:
   - utter_ask_seatcount
   - utter_ask_bookingtime
   - utter_ask_category
-  # - utter_ask_confirm_booking
-  # - utter_ask_seatbooked
+  - action_cancel_booking
   # FAQs
   - utter_faq_cancellation
   - utter_faq_booking

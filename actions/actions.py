@@ -1,15 +1,30 @@
-# import json
+import json
 
-# from pathlib import Path
-# from typing import Any, Text, Dict, List, Union
+from pathlib import Path
+from typing import Any, Text, Dict, List, Union
 
 
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-# from rasa_sdk.knowledge_base.storage import InMemoryKnowledgeBase
-# from rasa_sdk.knowledge_base.actions import ActionQueryKnowledgeBase
-# from rasa_sdk.forms import FormAction
-# from rasa_sdk.events import EventType
+from rasa_sdk import Action, Tracker, FormValidationAction
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.knowledge_base.storage import InMemoryKnowledgeBase
+from rasa_sdk.knowledge_base.actions import ActionQueryKnowledgeBase
+from rasa_sdk.forms import FormAction
+from rasa_sdk.events import EventType, AllSlotsReset
+from rasa_sdk.types import DomainDict
+
+# class ActionCancelBooking(Action):
+
+#      def name(self) -> Text:
+#             return "action_cancel_booking"
+
+#      def run(self, dispatcher: CollectingDispatcher,
+#              tracker: Tracker,
+#              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+#          dispatcher.utter_message("We've cancelled your booking")
+
+#          return [AllSlotsReset()]
+
 
 
 # class FormDataCollect(FormAction):
