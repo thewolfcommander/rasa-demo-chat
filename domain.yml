@@ -8,15 +8,18 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - faq
+  - faq_cancellation
+  - faq_booking
+  - faq_discount
+  - faq_special
+  - faq_timing
+  - faq_opening
   - give_information
+  - seat_count
   - ask_service
   - reservation
-
-entities:
-  - bookingseat
-  - confirmation
-  - faq_respond
+  - booking_time
+  - receive_category
 
 responses:
   utter_greet:
@@ -38,45 +41,102 @@ responses:
   utter_iamabot:
   - text: "Hey, I am a super advanced assistant in service for you."
 
-  utter_ask_confirm_booking:
-  - text: "Should I confirm the booking for you?"
- 
+  utter_startbooking:
+  - text: "Good to know you want a booking with us. Let's start the booking and we have everything that you need."
+
+  utter_recieve_seatcount:
+  - text: "Perfect, we will book {seatcount} for you."
+
+  bookingoptions:
+  - text: "Here are the booking options: [1] AC  and [2] Non-AC"
+
+  utter_book_success:
+  - text: "Hooray!! You've successfully booked the seat in XYZ restaurant. Here are the information that you've entered. Do you want to book? \n\t Name: {name} \n\t Number of seats: {seatcount} \n\t Booking Time: {bookingtime} \n\t AC/Non-AC: {category} \n\t "
+
+  # Input Questions to ask from user (mapped to custom actions)
+  utter_ask_name: 
+  - text: "May I know your name please?"
+
   utter_ask_seatcount:
-  - text: "how many seat you want to book"
+  - text: "How many seats do you want to book?"
 
   utter_ask_bookingtime:
   - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
-
-  utter_ask_seatbooked:
-  - text: "You have reserved 2 seats in our AC section for 7:30pm. Thanks!"
 
   utter_ask_category:
   - text: "Which section would you like to book"
     buttons:
       - title: "AC"
       - title: "Non AC"
-       
-  utter_ask_confirm booking:
-  - text: "Booking Confirm ! Do you want to reset"
 
-  utter_slots_values:
-  - text: "You've submitted the following answers:\n
-            - Bookingtype?: {utter_ask_category}\n
-            - Booking Time: {utter_ask_bookingtime}\n
-            - Seat: {utter_ask_seatcount}\n"
+  # utter_ask_confirm_booking:
+  # - text: "Booking Confirm ! Do you want to reset or recheck again?"
 
+  # utter_ask_seatbooked:
+  # - text: "You have reserved 2 seats in our AC section for 7:30pm. Thanks!"
+
+  # FAQ
+  utter_faq_cancellation:
+  - text: "To cancel a reservation, simply call us at +91 9876543210 and cancel your reservation"
+
+  utter_faq_booking:
+  - text: "Simply book your table here within a minute. After successful booking, you will get a confirmation and you don't have to pay until you've taken your meal"
+
+  utter_faq_discount:
+  - text: "You can get upto 10% off is you use our membership card."
+
+  utter_faq_special:
+  - text: "Our chef is a master of the Italian cuisine. Our core speciality is our pasta, which is renowned throughout the city."
+
+  utter_faq_timing:
+  - text: "The restaurant opens at 7pm and closes at 10pm."
+
+  utter_faq_opening:
+  - text: "The restaurant is open each and every day."
+
+
+entities:
+  - confirmation
+  - phone_number
+  - seatcount
 
 slots:
-  confirm_booking:
+  # confirm_booking:
+  #   type: unfeaturized
+  name:
     type: unfeaturized
   seatcount:
     type: unfeaturized
   bookingtime:
     type: unfeaturized
-  seatbooked:
-    type: unfeaturized
   category:
     type: unfeaturized
+
+
+actions:
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_happy
+  - utter_goodbye
+  - utter_iamabot
+  - utter_startbooking
+  - utter_recieve_seatcount
+  - bookingoptions
+  # Mapped actions
+  - utter_ask_name
+  - utter_ask_seatcount
+  - utter_ask_bookingtime
+  - utter_ask_category
+  # - utter_ask_confirm_booking
+  # - utter_ask_seatbooked
+  # FAQs
+  - utter_faq_cancellation
+  - utter_faq_booking
+  - utter_faq_discount
+  - utter_faq_special
+  - utter_faq_timing
+  - utter_faq_opening
 
 
 session_config:
@@ -84,4 +144,16 @@ session_config:
   carry_over_slots_to_new_session: true
 
 forms:
-  - customer_form
+  form_info:
+    required_slots:
+      name:
+      - type: from_text
+
+      seatcount:
+      - type: from_text
+
+      bookingtime:
+      - type: from_text
+
+      category:
+      - type: from_text

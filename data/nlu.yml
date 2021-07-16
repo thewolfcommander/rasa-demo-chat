@@ -1,6 +1,13 @@
 version: "2.0"
 
 nlu:
+- regex: phone_number
+  examples: |
+    - \d{10}
+- regex: seatcount
+  examples: |
+    - \d{1-2}
+
 - intent: greet
   examples: |
     - hey
@@ -94,23 +101,42 @@ nlu:
 
 # Here I'm going to write the core functionality of restaurant
 # Some of the faqs I've got from some restaurant website to get an overview of what type of questions are being asked by customers.
-- intent: faq
+- intent: faq_cancellation
   examples: |
-    - what are your timings?
-    - what days are you open?
     - how do i cancel a reservation?
-    - what are the specials?
-    - timings for restaurant?
     - cancelling a reservation?
+
+- intent: faq_booking
+  examples: |
+    - how do i make a regular table booking?
+    - how can i be certain my booking's been received?
+    - do i get any confirmation for my booking or reservation?
+    - how much do i have to pay for my booking?
+
+- intent: faq_discount
+  examples: |
     - can i get discount?
     - how do i get discount?
     - how to get discount?
     - how much discount can i get on booking a table?
     - how much discount can i get on reservation?
-    - how do i make a regular table booking?
-    - how can i be certain my booking's been received?
-    - do i get any confirmation for my booking or reservation?
-    - how much do i have to pay for my booking?
+
+- intent: faq_special
+  examples: |
+    - what are the specials?
+    - what specials can i get?
+    - is there any special thing?
+
+- intent: faq_timing
+  examples: |
+    - what are your timings?
+    - timings for restaurant?
+
+- intent: faq_opening
+  examples: |
+    - what days are you open?
+    - are you open everyday?
+
 
 - intent: give_information
   examples: |
@@ -122,6 +148,13 @@ nlu:
     - can you please send it to example@example.com?
     - can you please send it to [9999999999](phone_number)
     - email is example@example.com
+
+- intent: seat_count
+  examples: |
+    - [2](seatcount)
+    - [2](seatcount) seats
+    - i want to book [2](seatcount) seats
+    - book [2](seatcount) seats for me
 
 - intent: ask_service
   examples: |
@@ -143,3 +176,17 @@ nlu:
     - book table for me
     - book room for me
     - room available
+
+- intent: booking_time
+  examples: |
+    - [7:00 PM](booking_time)
+    - [7:30 PM](booking_time)
+    - In half an hour
+    - In one hour
+    - In 30 minutes
+    - In 2 hours
+
+- intent: receive_category
+  examples: |
+    - [AC](booking_category)
+    - [Non-AC](booking_category)
