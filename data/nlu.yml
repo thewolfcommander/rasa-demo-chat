@@ -177,15 +177,6 @@ nlu:
     - book room for me
     - room available
 
-- intent: booking_time
-  examples: |
-    - [7:00 PM](booking_time)
-    - [7:30 PM](booking_time)
-    - In half an hour
-    - In one hour
-    - In 30 minutes
-    - In 2 hours
-
 - intent: receive_category
   examples: |
     - [AC](booking_category)

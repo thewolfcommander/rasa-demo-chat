@@ -18,7 +18,6 @@ intents:
   - seat_count
   - ask_service
   - reservation
-  - booking_time
   - receive_category
   - show_booking
   - cancel_booking
