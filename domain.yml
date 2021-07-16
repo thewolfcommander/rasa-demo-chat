@@ -80,12 +80,6 @@ responses:
       - title: "AC"
       - title: "Non AC"
 
-  # utter_ask_confirm_booking:
-  # - text: "Booking Confirm ! Do you want to reset or recheck again?"
-
-  # utter_ask_seatbooked:
-  # - text: "You have reserved 2 seats in our AC section for 7:30pm. Thanks!"
-
   # FAQ
   utter_faq_cancellation:
   - text: "To cancel a reservation, simply call us at +91 9876543210 and cancel your reservation"
@@ -113,20 +107,13 @@ entities:
 
 slots:
   name:
-    type: text
-    influence_conversation: false
+    type: unfeaturized
   seatcount:
-    type: text
-    influence_conversation: false
+    type: unfeaturized
   bookingtime:
-    type: text
-    influence_conversation: true
+    type: unfeaturized
   category:
-    type: categorical
-    values:
-      - AC
-      - Non-AC
-    influence_conversation: true
+    type: unfeaturized
 
 
 actions:
@@ -165,7 +152,8 @@ forms:
       - type: from_text
 
       seatcount:
-      - type: from_text
+      - type: from_entity
+        entity: seatcount
 
       bookingtime:
       - type: from_text
