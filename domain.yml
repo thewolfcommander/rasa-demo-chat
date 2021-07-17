@@ -123,15 +123,12 @@ entities:
 slots:
   name:
     type: unfeaturized
-    auto_fill: false
   seatcount:
     type: unfeaturized
-    auto_fill: false
   time:
     type: unfeaturized
   category:
     type: unfeaturized
-    auto_fill: false
 
 
 actions:
