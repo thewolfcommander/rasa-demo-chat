@@ -22,6 +22,9 @@ intents:
   - show_booking
   - cancel_booking
 
+  - inform_slotcount
+  - inform_time
+
 responses:
   utter_greet:
   - text: "Hey! Welcome to XYZ Restaurant. How can I help you?"
@@ -52,10 +55,10 @@ responses:
   - text: "Here are the booking options: [1] AC  and [2] Non-AC"
 
   utter_book_success:
-  - text: "Hooray!! You've successfully booked the seat in XYZ restaurant. Here are your booking details: \n\t Name: {name} \n\t Number of seats: {seatcount} \n\t Booking Time: {bookingtime} \n\t AC/Non-AC: {category} \n\t "
+  - text: "Hooray!! You've successfully booked the seat in XYZ restaurant. Here are your booking details: \n\t Name: {name} \n\t Number of seats: {seatcount} \n\t Booking Time: {time} \n\t AC/Non-AC: {category} \n\t "
 
   utter_booking_details:
-  - text: "Here are your booking details: \n\t Name: {name} \n\t Number of seats: {seatcount} \n\t Booking Time: {bookingtime} \n\t AC/Non-AC: {category} \n\t "
+  - text: "Here are your booking details: \n\t Name: {name} \n\t Number of seats: {seatcount} \n\t Booking Time: {time} \n\t AC/Non-AC: {category} \n\t "
 
   utter_confirm_cancellation:
   - text: "Are you sure you want to cancel your booking? You may lose your precious slot."
@@ -70,7 +73,7 @@ responses:
   utter_ask_seatcount:
   - text: "How many seats do you want to book?"
 
-  utter_ask_bookingtime:
+  utter_ask_time:
   - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
 
   utter_ask_category:
@@ -98,18 +101,31 @@ responses:
   utter_faq_opening:
   - text: "The restaurant is open each and every day."
 
+  utter_wrong_name:
+  - text: "Name cannot be empty"
+
+  utter_wrong_seatcount:
+  - text: "Seat count is not correct"
+
+  utter_wrong_time:
+  - text: "Wrong booking time"
+
+  utter_wrong_category:
+  - text: "Wrong category"
+
 
 entities:
   - confirmation
   - phone_number
   - seatcount
+  - time
 
 slots:
   name:
     type: unfeaturized
   seatcount:
     type: unfeaturized
-  bookingtime:
+  time:
     type: unfeaturized
   category:
     type: unfeaturized
@@ -128,7 +144,7 @@ actions:
   # Mapped actions
   - utter_ask_name
   - utter_ask_seatcount
-  - utter_ask_bookingtime
+  - utter_ask_time
   - utter_ask_category
   - action_cancel_booking
   # FAQs
@@ -139,13 +155,16 @@ actions:
   - utter_faq_timing
   - utter_faq_opening
 
+  - reservation_form
+  - validate_reservation_form
+
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
 forms:
-  form_info:
+  reservation_form:
     required_slots:
       name:
       - type: from_text
@@ -154,8 +173,9 @@ forms:
       - type: from_entity
         entity: seatcount
 
-      bookingtime:
-      - type: from_text
+      time:
+      - type: from_entity
+        entity: time
 
       category:
       - type: from_text

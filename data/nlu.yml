@@ -197,3 +197,17 @@ nlu:
     - i don't want my booking
     - i don't want this restaurant
     - i don't like this booking
+
+- intent: inform_slotcount
+  examples: |
+    - book [4](seatcount) for me
+    - [4](seatcount)
+    - only [4](seatcount) seats
+    - book [4](seatcount) seats for me
+
+- intent: inform_time
+  examples: |
+    - [in an hour](time)
+    - [7 PM](time)
+    - [today at 7 pm](time)
+    - [tomorrow at 7 pm](time)

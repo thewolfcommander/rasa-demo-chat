@@ -31,6 +31,8 @@ We suggest that you use the [Rasa framework](https://rasa.com/) to build this bo
 
 You can check out this simple [Rasa tutorial](https://rasa.com/docs/rasa/user-guide/rasa-tutorial/) to get an idea of how to approach the problem.
 
+docker run -p 8000:8000 rasa/duckling
+
 # Flows
 
 Please note that the flows below are only meant as examples to demonstrate functionalities. We would expect the bot to also handle questions having the same meaning but posed in different ways.
